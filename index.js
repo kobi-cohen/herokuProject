@@ -1,45 +1,13 @@
-let headline=document.getElementById('headline');
-let btn=document.getElementById('btn');
+var express=require('express');
+var app=express();
+// var passport=require('passport');
+// var GoogleStrategy=require('passport-google-oauth20').Strategy();
+var hbs = require('hbs');
 
-let collector='';
-foo1=(cb)=>{
-    setTimeout(()=>{
-    collector='Welcome to';
-    headline.append(collector);
-    cb(foo3);
-},1000);
-   
-};
-
-foo2=(cb)=>{
-    setTimeout(()=>{ 
-        collector=' my new Heroku'; 
-    headline.append(collector);
-    cb();
-},1000)
-   
-}
-foo3=()=>{
-    setTimeout(()=>{ 
-        collector=' Project :) '; 
-        headline.append(collector);
-    },1000)
-   
-}
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname + '/default.html');
+});
 
 
-
-foo1(foo2);
-
-setTimeout(()=>{
-    headline.style=`display:none;`
-    btn.style=`display:block;`
-    btn.addEventListener("click",()=>{
-        headline.textContent='';
-        headline.style=`display:block;`
-        btn.style=`display:none;`
-        foo1(foo2);});
-}
-,6000);
-
-
+const PORT = process.env.PORT || 80;
+app.listen(PORT); 
